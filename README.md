@@ -74,7 +74,7 @@ The system is smart enough to automatically discover your TP-Link devices on you
 
 1. **Discover your devices automatically:**
    ```bash
-   ./find_device_ids.py
+   ./test_devices.py
    ```
 
 2. **Copy the Device IDs** that are displayed.
