@@ -10,7 +10,7 @@ Automatically control TP-Link smart lights based on Pro Tools recording state us
 
 ```bash
 # Clone and setup
-git clone https://github.com/YOUR_USERNAME/Pro-Tools-Smart-Light.git
+git clone https://github.com/Arampc/Pro-Tools-Smart-Light.git
 cd Pro-Tools-Smart-Light
 ./setup.sh
 
