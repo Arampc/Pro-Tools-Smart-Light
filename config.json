@@ -14,37 +14,37 @@
             "name": "Recording Light 1",
             "location": "Green Room",
             "type": "Socket",
-            "device_id": "8006760185751EF6BC07278FBBFDBFE118D0045A"
+            "device_id": "50:C7:BF:EA:1C:EA"
         },
         {
             "name": "Recording Light 2", 
             "location": "Lounge",
             "type": "Socket",
-            "device_id": "8006AF4E0F1D4E8B792E8FE90811A3AA173D9829"
+            "device_id": "50:C7:BF:02:08:6F"
         },
         {
             "name": "Recording Light 3",
             "location": "Jim's Office", 
             "type": "Socket",
-            "device_id": "8006675E37F7EBCB85C54FA0FC664D3817413EF6"
+            "device_id": "50:C7:BF:02:C9:38"
         },
         {
             "name": "Recording Light 4",
             "location": "Vestibule",
             "type": "Socket", 
-            "device_id": "800644F8993DD132DC7A7416750BB39A18B1A134"
+            "device_id": "50:C7:BF:C9:6A:7E"
         },
         {
             "name": "Recording Light 5",
             "location": "Drum Room",
             "type": "Bulb",
-            "device_id": "80122FDBDF3FD96AE2E179F581E7171C1E8C9A2A"
+            "device_id": "c0:06:c3:f6:30:45"
         },
         {
             "name": "Recording Light 6",
             "location": "Vocal Booth",
             "type": "Bulb", 
-            "device_id": "8012D9D1E1961AFD70E7FB42B105DF051E89BD5F"
+            "device_id": "c0:06:c3:55:4d:bb"
         }
     ]
 } 
