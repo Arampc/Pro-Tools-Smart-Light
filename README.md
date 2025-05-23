@@ -66,39 +66,49 @@ cd Pro-Tools-Smart-Light
 
 **Just follow the prompts** - press Enter when it asks you to continue.
 
-### Step 3: Set Up Your Smart Light IP Addresses
+### Step 3: Find Your Smart Light Device IDs
 
-**You need to tell the system where your lights are on your network.**
+**Great news! You don't need IP addresses - the system finds your lights automatically!**
 
-1. **Find your device IP addresses:**
-   - Open your router's web page (usually http://192.168.1.1 or check the sticker on your router)
-   - Look for "Connected Devices" or "DHCP Clients"
-   - Find your TP-Link devices and note their IP addresses
+The system is smart enough to automatically discover your TP-Link devices on your network, even if their IP addresses change. You just need to find their unique Device IDs (which never change).
 
-2. **Edit the configuration file:**
+1. **Discover your devices automatically:**
+   ```bash
+   ./find_device_ids.py
+   ```
+
+2. **Copy the Device IDs** that are displayed.
+
+3. **Edit the configuration file:**
    ```bash
    open config.json
    ```
 
-3. **Update the device list** with your actual IP addresses:
+4. **Update the device list** with your Device IDs:
    ```json
    {
      "devices": [
        {
          "name": "Studio Light 1",
-         "ip": "192.168.1.100",
-         "type": "plug"
+         "location": "Control Room",
+         "type": "Socket",
+         "device_id": "8006760185751EF6BC07278FBBFDBFE118D0045A"
        },
        {
          "name": "Studio Light 2", 
-         "ip": "192.168.1.101",
-         "type": "bulb"
+         "location": "Vocal Booth",
+         "type": "Bulb",
+         "device_id": "80122FDBDF3FD96AE2E179F581E7171C1E8C9A2A"
        }
      ]
    }
    ```
 
-**Don't know your IP addresses?** The setup script will help you find them during installation.
+**Why Device IDs instead of IP addresses?**
+- ✅ Device IDs never change (like serial numbers)
+- ✅ Works even when your router assigns new IP addresses
+- ✅ No need to set static IPs on your router
+- ✅ Automatically finds devices wherever they are on your network
 
 ### Step 4: Connect Pro Tools to the Light System
 
