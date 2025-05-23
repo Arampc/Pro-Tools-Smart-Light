@@ -130,22 +130,27 @@ cd Pro-Tools-Smart-Light
 
 1. **Open Pro Tools**
 
-2. **Go to Setup Menu:**
-   - Click **Setup** → **MIDI** → **MIDI Studio**
-   - Make sure **Enable MIDI** is checked
+2. **Set up MIDI Output (Method 1 - Easiest):**
+   - Go to **Setup** → **Peripherals**
+   - Click the **MIDI Controllers** tab
+   - Find an empty controller slot
+   - Set **Type:** to **HUI**
+   - Set **Send To:** to **Recording Light Controller**
+   - Check **Enable** and click **OK**
 
-3. **Enable MIDI Output:**
-   - Go to **Setup** → **MIDI** → **MIDI Output Enable**
-   - Check the box for **"Recording Light Controller"**
-   - Click **OK**
+3. **Alternative Method - MIDI Track:**
+   - Create a new **MIDI Track**
+   - Set the track output to **"Recording Light Controller"**
+   - The system will automatically detect Pro Tools play/record state
 
 4. **Test it out:**
-   - Create a new project or open an existing one
-   - Click the **Record** button (red circle) on any track
+   - Click **Record Enable** on any track (red R button)
    - Click **Play** - **Your lights should turn ON!** 🎉
    - Click **Stop** - **Your lights should turn OFF!** ✨
 
-**That's it!** Your lights will now automatically turn on when you record and off when you stop.
+**That's it!** Your lights will automatically turn on when you're recording and off when you stop.
+
+**Need more detailed setup?** See `PRO_TOOLS_SETUP.md` for advanced configuration options.
 
 ## 🎉 You're Done! How to Use
 
