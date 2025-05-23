@@ -1,219 +1,219 @@
 # Pro Tools Smart Light Controller 🎙️💡
 
-Automatically control TP-Link smart lights based on Pro Tools recording state using MIDI communication. When you press Record in Pro Tools, all configured lights turn on. When you stop recording, they turn off.
+**Automatically turn your studio lights ON when recording in Pro Tools, and OFF when you stop!**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![macOS](https://img.shields.io/badge/platform-macOS-lightgrey.svg)](https://www.apple.com/macos/)
+This is a simple system that connects your TP-Link smart lights to Pro Tools. When you press Record and Play in Pro Tools, all your lights turn on. When you stop recording, they turn off automatically.
 
-## 🚀 Quick Start
+**Perfect for:** 
+- Recording studios
+- Podcast setups  
+- Home studios
+- Any situation where you need "ON AIR" lighting
 
+## What You Need
+
+- **A Mac computer** (this won't work on Windows)
+- **Pro Tools** (any recent version)
+- **TP-Link smart lights or smart plugs** (connected to your Wi-Fi)
+- **Basic computer skills** (following step-by-step instructions)
+
+You do **NOT** need to know programming or be technical - this guide will walk you through everything!
+
+## 📋 Step-by-Step Installation
+
+**Don't worry - all the technical stuff happens automatically!**
+
+### Step 1: Download This Project
+
+**Option A: Easy Download**
+1. Click the green **"Code"** button at the top of this page
+2. Click **"Download ZIP"**  
+3. Double-click the downloaded file to unzip it
+4. Drag the folder to your **Documents** folder
+5. Rename the folder to: `Pro-Tools-Smart-Light`
+
+**Option B: If You're Comfortable with Terminal**
 ```bash
-# Clone and setup
+cd ~/Documents
 git clone https://github.com/Arampc/Pro-Tools-Smart-Light.git
 cd Pro-Tools-Smart-Light
-./setup.sh
-
-# Configure Pro Tools to send MIDI to "Recording Light Controller"
-# See PRO_TOOLS_SETUP.md for detailed instructions
 ```
 
-## Features
+### Step 2: Open Terminal and Run the Magic Setup Command
 
-- 🎙️ Direct MIDI communication with Pro Tools for instant response
-- 💡 Controls TP-Link HS110 smart sockets and KL125 smart bulbs
-- 🚀 Runs automatically when you log in to macOS
-- ⚡ Ultra-low latency with debouncing for reliable operation
-- 📝 Comprehensive logging for troubleshooting
+**Don't be scared of Terminal - you're just typing one command!**
 
-## Supported Devices
+1. **Open Terminal:**
+   - Press `Cmd + Space` (opens Spotlight search)
+   - Type: `Terminal`
+   - Press Enter
 
-This controller is configured for the following devices:
-
-| Device | Location | Type | Device ID |
-|--------|----------|------|-----------|
-| Recording Light 1 | Green Room | Socket | 8006760185751EF6BC07278FBBFDBFE118D0045A |
-| Recording Light 2 | Lounge | Socket | 8006AF4E0F1D4E8B792E8FE90811A3AA173D9829 |
-| Recording Light 3 | Jim's Office | Socket | 8006675E37F7EBCB85C54FA0FC664D3817413EF6 |
-| Recording Light 4 | Vestibule | Socket | 800644F8993DD132DC7A7416750BB39A18B1A134 |
-| Recording Light 5 | Drum Room | Bulb | 80122FDBDF3FD96AE2E179F581E7171C1E8C9A2A |
-| Recording Light 6 | Vocal Booth | Bulb | 8012D9D1E1961AFD70E7FB42B105DF051E89BD5F |
-
-## Requirements
-
-- macOS (tested on macOS 13+)
-- Python 3.8 or higher
-- Pro Tools with MIDI capability
-- TP-Link smart devices connected to Wi-Fi network "624"
-- Network access to control the devices
-
-## Quick Setup
-
-1. Clone or download this repository to your Documents folder
-2. Open Terminal and navigate to the project directory:
+2. **Navigate to your project:**
    ```bash
-   cd ~/Documents/pro-tools-recording-lights
+   cd ~/Documents/Pro-Tools-Smart-Light
    ```
 
-3. Make the setup script executable and run it:
+3. **Run the automatic setup:**
    ```bash
-   chmod +x setup.sh
    ./setup.sh
    ```
 
-The setup script will:
-- Create a Python virtual environment
-- Install all required dependencies
-- Configure the launch agent for automatic startup
-- Start the service immediately
+**What happens now?** The setup will automatically:
+- ✅ Install all the technical Python stuff (you don't need to worry about this!)
+- ✅ Test your smart lights
+- ✅ Set everything up to start automatically when you turn on your Mac
+- ✅ Start the system running in the background
 
-## Pro Tools Configuration
+**Just follow the prompts** - press Enter when it asks you to continue.
 
-After installation, you need to configure Pro Tools to send MIDI to the controller:
+### Step 3: Set Up Your Smart Light IP Addresses
 
-1. **Open Pro Tools** and go to **Setup > Peripherals > MIDI Controllers**
+**You need to tell the system where your lights are on your network.**
 
-2. **Add a new MIDI Controller:**
-   - Type: **HUI** (or Generic MIDI)
-   - Receive From: *[Your MIDI Interface]*
-   - Send To: **Recording Light Controller**
+1. **Find your device IP addresses:**
+   - Open your router's web page (usually http://192.168.1.1 or check the sticker on your router)
+   - Look for "Connected Devices" or "DHCP Clients"
+   - Find your TP-Link devices and note their IP addresses
+
+2. **Edit the configuration file:**
+   ```bash
+   open config.json
+   ```
+
+3. **Update the device list** with your actual IP addresses:
+   ```json
+   {
+     "devices": [
+       {
+         "name": "Studio Light 1",
+         "ip": "192.168.1.100",
+         "type": "plug"
+       },
+       {
+         "name": "Studio Light 2", 
+         "ip": "192.168.1.101",
+         "type": "bulb"
+       }
+     ]
+   }
+   ```
+
+**Don't know your IP addresses?** The setup script will help you find them during installation.
+
+### Step 4: Connect Pro Tools to the Light System
+
+**This is the final step to make Pro Tools talk to your lights!**
+
+1. **Open Pro Tools**
+
+2. **Go to Setup Menu:**
+   - Click **Setup** → **MIDI** → **MIDI Studio**
+   - Make sure **Enable MIDI** is checked
+
+3. **Enable MIDI Output:**
+   - Go to **Setup** → **MIDI** → **MIDI Output Enable**
+   - Check the box for **"Recording Light Controller"**
    - Click **OK**
 
-3. **Configure MIDI Mapping:**
-   - The controller expects:
-     - **CC 117** for Play/Stop events
-     - **CC 118** for Record Enable/Disable events
+4. **Test it out:**
+   - Create a new project or open an existing one
+   - Click the **Record** button (red circle) on any track
+   - Click **Play** - **Your lights should turn ON!** 🎉
+   - Click **Stop** - **Your lights should turn OFF!** ✨
 
-4. **Alternative: Use Pro Tools MIDI Track:**
-   - Create a MIDI track
-   - Route output to "Recording Light Controller"
-   - Use MIDI events or automation to control lights
+**That's it!** Your lights will now automatically turn on when you record and off when you stop.
 
-## How It Works
+## 🎉 You're Done! How to Use
 
-The controller creates a virtual MIDI port called "Recording Light Controller" that Pro Tools can send messages to. It monitors for specific Control Change (CC) messages:
+**Normal Operation:**
+- Just use Pro Tools like normal
+- When you press **Record + Play**: Lights turn **ON**
+- When you press **Stop**: Lights turn **OFF**  
+- The system runs automatically in the background
 
-- When **Record is enabled AND Play is pressed**: Lights turn **ON**
-- When **Recording stops**: Lights turn **OFF**
-- Events are debounced (250ms) to handle out-of-order MIDI messages
+**The system will:**
+- ✅ Start automatically when you turn on your Mac
+- ✅ Work with any Pro Tools project
+- ✅ Turn lights on ONLY when you're actually recording
+- ✅ Turn lights off immediately when you stop
 
-This direct MIDI approach provides:
-- Instant response time
-- 100% reliability
-- No UI monitoring or accessibility permissions needed
-- Works with any Pro Tools version that supports MIDI
+## 🔧 Testing Your Setup
 
-## Manual Installation
-
-If you prefer to install manually:
-
-1. Create a virtual environment:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Test the script:
-   ```bash
-   python recording_lights_controller.py
-   ```
-
-4. Install the launch agent:
-   ```bash
-   cp com.studio.recordinglights.plist ~/Library/LaunchAgents/
-   launchctl load ~/Library/LaunchAgents/com.studio.recordinglights.plist
-   ```
-
-## Usage
-
-Once installed and configured:
-
-1. The controller runs automatically in the background
-2. Configure Pro Tools to send MIDI to "Recording Light Controller"
-3. Use Pro Tools normally:
-   - **Press Record + Play**: All lights turn ON
-   - **Stop Recording**: All lights turn OFF
-
-## Service Management
-
-Control the background service:
-
+**Test your lights manually:**
 ```bash
-# Start the service
-launchctl start com.studio.recordinglights
+cd ~/Documents/Pro-Tools-Smart-Light
+./manual_control.py --action on    # Turn all lights ON
+./manual_control.py --action off   # Turn all lights OFF
+```
 
-# Stop the service
+**Test individual components:**
+```bash
+./test_devices.py   # Test if your lights respond
+./test_midi.py      # Test if MIDI is working
+```
+
+## ❓ Troubleshooting
+
+**"Permission denied" when running setup:**
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+**Lights don't respond:**
+- Make sure your lights are connected to Wi-Fi and working in the Kasa app
+- Check that your Mac and lights are on the same Wi-Fi network  
+- Try turning lights on/off manually: `./manual_control.py --action on`
+
+**Pro Tools doesn't see "Recording Light Controller":**
+- Restart Pro Tools after running the setup
+- Check if the system is running: `launchctl list | grep recordinglights`
+
+**Need help?** Check the log files in your project folder:
+- Look at `recording_lights.log` for error messages
+- Run `./test_devices.py` to check if your lights work
+
+## 🔧 Advanced Options
+
+**Add more lights:** Edit `config.json` and add more devices to the list.
+
+**Control lights manually:**
+```bash
+./manual_control.py --action on --device "Studio Light 1"   # Turn on one light
+./manual_control.py --list                                   # See all your lights
+```
+
+**Restart the system:**
+```bash
 launchctl stop com.studio.recordinglights
+launchctl start com.studio.recordinglights
+```
 
-# Restart the service
-launchctl stop com.studio.recordinglights && launchctl start com.studio.recordinglights
-
-# Uninstall the service
+**Remove everything completely:**
+```bash
 launchctl unload ~/Library/LaunchAgents/com.studio.recordinglights.plist
 rm ~/Library/LaunchAgents/com.studio.recordinglights.plist
+rm -rf ~/Documents/Pro-Tools-Smart-Light
 ```
 
-## Logs and Troubleshooting
+## 💡 About This System
 
-The controller creates several log files for debugging:
+**What does the setup install?**
+- Python libraries: `python-kasa` (to talk to TP-Link devices) and `python-rtmidi` (to talk to Pro Tools)
+- A background service that starts automatically when you boot your Mac
+- A virtual MIDI port that Pro Tools can send messages to
 
-- `recording_lights.log`: Main application log with device discovery and MIDI events
-- `stdout.log`: Standard output from the service
-- `stderr.log`: Error output from the service
+**Is it safe?** 
+- Yes! Everything runs locally on your Mac
+- No internet required after setup
+- Only communicates with your local Wi-Fi devices
 
-### Common Issues
+**Will it slow down my Mac?**
+- No! It uses virtually no CPU or memory when running
+- Only activates when Pro Tools sends MIDI messages
 
-1. **Devices not found**: 
-   - Ensure all devices are powered on and connected to Wi-Fi network "624"
-   - Check that your Mac is on the same network
-   - Try power cycling the devices
+---
 
-2. **MIDI port not showing in Pro Tools**:
-   - Restart the controller service
-   - Check if the virtual MIDI port was created: Look for "Recording Light Controller" in Audio MIDI Setup
-   - Restart Pro Tools after starting the controller
+🎵 **Enjoy your automated recording studio lights!** 🎵
 
-3. **Lights not responding to Pro Tools**:
-   - Verify Pro Tools is sending MIDI to "Recording Light Controller"
-   - Check the logs for incoming MIDI messages
-   - Ensure CC 117 and CC 118 are being sent
-
-4. **Service not starting**:
-   - Check stderr.log for Python errors
-   - Ensure Python 3 is installed: `python3 --version`
-   - Verify the virtual environment was created correctly
-
-## Testing
-
-Use the included test scripts:
-
-- `test_devices.py`: Test TP-Link device connectivity
-- `manual_control.py`: Manually control lights without Pro Tools
-
-## Configuration
-
-To add or modify devices, edit the `device_configs` list in `recording_lights_controller.py`:
-
-```python
-self.device_configs = [
-    DeviceConfig("Device Name", "Location", "Socket|Bulb", "DEVICE_ID"),
-    # Add more devices here
-]
-```
-
-## License
-
-This project is provided as-is for personal use in recording studios.
-
-## Support
-
-For issues or questions:
-1. Check the log files for error messages
-2. Ensure Pro Tools MIDI is configured correctly
-3. Test device connectivity with `test_devices.py`
-4. Verify MIDI messages are being received in the logs 
+*Having issues? Check the troubleshooting section above or create an issue on GitHub.* 
