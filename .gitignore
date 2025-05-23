@@ -60,4 +60,8 @@ Temporary Items
 
 # Project specific
 device_cache/
-midi_cache/ 
+midi_cache/
+
+# Keep config.json as template, but ignore local modifications
+# Uncomment the line below if you want to ignore local config changes:
+# config.json 
