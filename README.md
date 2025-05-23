@@ -86,7 +86,10 @@ cd Pro-Tools-Smart-Light
 
 1. **Test your devices manually** (after setup):
    ```bash
+   # First activate the virtual environment
    source venv/bin/activate
+   
+   # Then run the test
    ./test_devices.py
    ```
 
@@ -163,14 +166,16 @@ cd Pro-Tools-Smart-Light
 **Test your lights manually:**
 ```bash
 cd ~/Documents/Pro-Tools-Smart-Light
+source venv/bin/activate           # Activate virtual environment first
 ./manual_control.py --action on    # Turn all lights ON
 ./manual_control.py --action off   # Turn all lights OFF
 ```
 
 **Test individual components:**
 ```bash
-./test_devices.py   # Test if your lights respond
-./test_midi.py      # Test if MIDI is working
+source venv/bin/activate  # Activate virtual environment first
+./test_devices.py         # Test if your lights respond
+./test_midi.py           # Test if MIDI is working
 ```
 
 ## ❓ Troubleshooting
