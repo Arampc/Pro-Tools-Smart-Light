@@ -106,13 +106,13 @@ cd Pro-Tools-Smart-Light
          "name": "Studio Light 1",
          "location": "Control Room",
          "type": "Socket",
-         "device_id": "8006760185751EF6BC07278FBBFDBFE118D0045A"
+         "device_id": "<mac_address>"
        },
        {
          "name": "Studio Light 2", 
          "location": "Vocal Booth",
          "type": "Bulb",
-         "device_id": "80122FDBDF3FD96AE2E179F581E7171C1E8C9A2A"
+         "device_id": "<mac_address>"
        }
      ]
    }
