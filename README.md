@@ -66,25 +66,36 @@ cd Pro-Tools-Smart-Light
 
 **Just follow the prompts** - press Enter when it asks you to continue.
 
-### Step 3: Find Your Smart Light Device IDs
+### Step 3: Run the Setup (This Installs Everything!)
 
-**Great news! You don't need IP addresses - the system finds your lights automatically!**
+**The setup script will automatically install all dependencies and test your devices:**
 
-The system is smart enough to automatically discover your TP-Link devices on your network, even if their IP addresses change. You just need to find their unique Device IDs (which never change).
+```bash
+./setup.sh
+```
 
-1. **Discover your devices automatically:**
+**What this does:**
+- ✅ Installs all Python libraries (kasa, rtmidi, etc.)
+- ✅ Tests all your smart lights automatically
+- ✅ Sets up the background service
+- ✅ Shows you which devices were found
+
+### Step 4: Configure Device IDs (If Needed)
+
+**Good news! The system already knows about your lights!** The current configuration has your Device IDs pre-configured. But if you need to check or modify them:
+
+1. **Test your devices manually** (after setup):
    ```bash
+   source venv/bin/activate
    ./test_devices.py
    ```
 
-2. **Copy the Device IDs** that are displayed.
-
-3. **Edit the configuration file:**
+2. **Edit the configuration file** (if needed):
    ```bash
    open config.json
    ```
 
-4. **Update the device list** with your Device IDs:
+3. **Device configuration format:**
    ```json
    {
      "devices": [
@@ -110,7 +121,7 @@ The system is smart enough to automatically discover your TP-Link devices on you
 - ✅ No need to set static IPs on your router
 - ✅ Automatically finds devices wherever they are on your network
 
-### Step 4: Connect Pro Tools to the Light System
+### Step 5: Connect Pro Tools to the Light System
 
 **This is the final step to make Pro Tools talk to your lights!**
 
