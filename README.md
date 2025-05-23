@@ -1,6 +1,22 @@
-# Pro Tools Recording Light Controller
+# Pro Tools Smart Light Controller 🎙️💡
 
 Automatically control TP-Link smart lights based on Pro Tools recording state using MIDI communication. When you press Record in Pro Tools, all configured lights turn on. When you stop recording, they turn off.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![macOS](https://img.shields.io/badge/platform-macOS-lightgrey.svg)](https://www.apple.com/macos/)
+
+## 🚀 Quick Start
+
+```bash
+# Clone and setup
+git clone https://github.com/YOUR_USERNAME/Pro-Tools-Smart-Light.git
+cd Pro-Tools-Smart-Light
+./setup.sh
+
+# Configure Pro Tools to send MIDI to "Recording Light Controller"
+# See PRO_TOOLS_SETUP.md for detailed instructions
+```
 
 ## Features
 
